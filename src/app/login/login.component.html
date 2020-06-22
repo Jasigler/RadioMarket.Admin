@@ -1,14 +1,15 @@
-<section class="hero is-fullheight">
+<section class="hero hero-container">
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-          <h1 class="title rmadmin-title">Radiomarket Admin Portal</h1>
-          <div class="field">
+          <h1 class="title rmadmin-title">RM Admin Portal</h1>
+          <form [formGroup]="loginForm">
+          <div class="field" >
             <p class="control has-icons-left has-icons-right">
-              <input class="input" type="email" placeholder="Email" />
+              <input class="input" type="text" placeholder="User" formControlName="username" />
               <span class="icon is-small is-left">
-                <fa-icon [icon]="faEnvelope"></fa-icon>
+                <fa-icon [icon]="faUser"></fa-icon>
               </span>
               <span class="icon is-small is-right">
                 <i class="fas fa-check"></i>
@@ -17,15 +18,16 @@
           </div>
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="password" placeholder="Password" />
+              <input class="input" [class.is-danger]="loginFailure" type="password" placeholder="Password" formControlName="password" />
               <span class="icon is-small is-left">
                <fa-icon [icon]="faLock"></fa-icon>
               </span>
             </p>
           </div>
+          </form>
           <div class="field">
             <p class="control">
-              <button class="button is-success">
+              <button class="button is-success login-button" (click)="login()" >
                 Login
               </button>
             </p>
@@ -35,3 +37,17 @@
     </div>
   </div>
 </section>
+<section>
+  <div class="container">
+   <div class="columns is-centered">
+    <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+      <div class="notification is-danger failed-login-notification" *ngIf="loginFailure">
+        <button class="delete"></button>
+        Could Not Verify Username or Password
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+
+
