@@ -15,7 +15,9 @@ export const environment = {
    ADMIN_PASSWORD: "${process.env.ADMIN_PW}"
    DOMAIN: "${process.env.DOMAIN}",
    CLIENT_ID: "${process.env.CLIENT_ID}",
-   CLIENT_SECRET: "${process.env.CLIENT_SECRET}"
+   CLIENT_SECRET: "${process.env.CLIENT_SECRET}",
+   CATEGORY_HEALTHROUTE: "${process.env.CATEGORY_HEALTHROUTE}"
+
 };
 `;
 

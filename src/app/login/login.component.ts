@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
       username: '',
       password: ''
     });
-    this.loginForm.valueChanges.subscribe();
   }
 
   async login() {

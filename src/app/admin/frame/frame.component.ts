@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
+import {HealthcheckComponent} from '../healthcheck/healthcheck.component';
 
 @Component({
   selector: 'app-frame',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrameComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
+ async logout() {
+  await this.router.navigate(['/']);
+ }
 }
