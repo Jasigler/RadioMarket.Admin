@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup,} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import {Router} from '@angular/router';
 import { environment} from '../../environments/environment';
 import {faLock} from '@fortawesome/free-solid-svg-icons/faLock';

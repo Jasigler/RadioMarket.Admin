@@ -1,6 +1,8 @@
 # Radiomarket Admin Portal
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
+This is the admin web portal for the RadioMarket project. Its main pupose is to provide a visual representation of microservice health check polling, but will also enable admins to perform tasks that are not available to end users (updating categories, managing users, toggling feature flags, etc.)
+
+As the main Radiomarket project grows, so too will this documentation. 
 
 ## Development server
 

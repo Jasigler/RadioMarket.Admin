@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
-import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
-import {interval, of} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,19 @@ export class HealthService {
 
   private categoryHealthRoute = environment.CATEGORY_HEALTHROUTE;
 
-  public getCategoryHealth() {
-    return this.http.get(this.categoryHealthRoute);
+  public getCategoryHealth(): Observable<string> {
+
+    return this.http.get(this.categoryHealthRoute, {responseType: 'text'})
+      .pipe(
+        catchError(this.errorHandler),
+        retry(3)
+      );
+  }
+
+
+  errorHandler(error: HttpErrorResponse){
+    console.log(error);
+    return throwError(error);
   }
 
 }
