@@ -1,11 +1,15 @@
 
 export const environment = {
    production: false,
-   ADMIN_USER: 'admin',
-   ADMIN_PASSWORD: 'admin',
-   DOMAIN: 'dev-q2k-acx2.auth0.com',
-   CLIENT_ID: 'hEPQK43m4njRdDs4Nq9q1fdpRN8ZsJsd',
-   CLIENT_SECRET: 'SA5SnY_b_G0K7Q6KHiUxuOZf9sS5NhfhfMfVRgQco3ElCHwGtd4xRcWX6RJdBcl',
-   CATEGORY_HEALTHROUTE: 'https://localhost:1770/health'
+   ADMIN_USER: "admin",
+   ADMIN_PASSWORD: "admin",
+   CATEGORY_HEALTHROUTE: "https://localhost:1760/health",
+   CATEGORY_API: "https://localhost:1760/api",
+   ITEM_HEALTHROUTE: "https://localhost:1720/health",
+   ITEM_API: "https://localhost:1720/api",
+   IMAGE_HEALTHROUTE: "https://localhost:1740/health",
+   IMAGE_API: "https://localhost:1740/api",
+   USER_HEALTHROUTE: "https://localhost:1780/health",
+   USER_API: "https://localhost:1780/api"
 
 };

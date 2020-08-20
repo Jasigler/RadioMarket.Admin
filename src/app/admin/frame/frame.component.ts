@@ -16,4 +16,13 @@ export class FrameComponent implements OnInit {
  async logout() {
   await this.router.navigate(['/']);
  }
+ 
+ async dashboard() {
+   await this.router.navigate(['/admin'])
+ }
+
+ async category() {
+   await this.router.navigate(['/category'])
+ }
+
 }
