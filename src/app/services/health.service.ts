@@ -11,19 +11,48 @@ export class HealthService {
   constructor(private http: HttpClient) {
   }
 
-  private categoryHealthRoute = environment.CATEGORY_HEALTHROUTE;
-
-  public getCategoryHealth(): Observable<string> {
-
-    return this.http.get(this.categoryHealthRoute, {responseType: 'text'})
-      .pipe(
-        catchError(this.errorHandler),
-        retry(3)
-      );
+  private routes ={
+    category: environment.CATEGORY_HEALTHROUTE,
+    item: environment.ITEM_HEALTHROUTE,
+    image: environment.IMAGE_HEALTHROUTE,
+    user: environment.USER_HEALTHROUTE
   }
 
 
-  errorHandler(error: HttpErrorResponse){
+  public getCategoryHealth(): Observable<string> {
+
+    return this.http.get(this.routes.category, {responseType: 'text'})
+      .pipe(
+        catchError(this.errorHandler),
+        retry(3)
+      )
+  }
+
+  public getItemHealth(): Observable<string> {
+    return this.http.get(this.routes.item, {responseType: 'text'}) 
+    .pipe(
+      catchError(this.errorHandler),
+      retry(3)
+    )
+  }
+
+  public getImageHealth(): Observable<string> {
+    return this.http.get(this.routes.image, {responseType: 'text'})
+      .pipe(
+        catchError(this.errorHandler),
+        retry(3)
+      )
+  }
+
+  public getUserHealth(): Observable<string> {
+    return this.http.get(this.routes.user, {responseType: 'text'})
+    .pipe(
+      catchError(this.errorHandler),
+      retry(3)
+    )
+  }
+
+  private errorHandler(error: HttpErrorResponse){
     console.log(error);
     return throwError(error);
   }

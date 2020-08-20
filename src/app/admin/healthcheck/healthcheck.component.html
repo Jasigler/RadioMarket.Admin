@@ -1,7 +1,33 @@
-  <div class="tile is-child box has-text-centered">
-    <H2 class='subtitle'>Category Service</H2>
-    <div class="content">
+<app-frame></app-frame>
+<section class="section main-content has-background-light"> 
+  <div class="container service-container">
+
+ <div class="tile  box has-text-centered service-card">
+    <H2 class='subtitle card-title'>Category Service</H2>
+    <div class="content" [ngClass]="{'has-text-danger': !categoryStatus, 'has-text-success': categoryStatus}">
       <fa-icon [icon]="categoryStatus? upsymbol : downsymbol" transform="grow"></fa-icon>
     </div>
 
   </div>
+    <div class="tile box  has-text-centered service-card" >
+    <H2 class='subtitle card-title'>Item Service</H2>
+    <div class="content" [ngClass]="{'has-text-success': itemStatus, 'has-text-danger': !itemStatus}">
+      <fa-icon [icon]="itemStatus? upsymbol : downsymbol" transform="grow"></fa-icon>
+    </div>
+
+  </div>
+    <div class="tile box has-text-centered service-card">
+    <H2 class='subtitle card-title'>Image Service</H2>
+    <div class="content" [ngClass]="{'has-text-danger': !imageStatus, 'has-text-success': imageStatus}">
+      <fa-icon [icon]="imageStatus? upsymbol : downsymbol" transform="grow"></fa-icon>
+    </div>
+
+  </div>
+    <div class="tile  box has-text-centered service-card">
+    <H2 class='subtitle card-title'>User Service</H2>
+    <div class="content" [ngClass]="{'has-text-danger': !userStatus, 'has-text-success': userStatus}">
+      <fa-icon [icon]="userStatus? upsymbol : downsymbol" transform="grow"></fa-icon>
+    </div>
+  </div>
+  </div>
+</section>

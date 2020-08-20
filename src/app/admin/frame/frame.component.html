@@ -16,15 +16,15 @@
 <div class="navbar-menu">
   <div class="navbar-start">
     <div class="navbar-item has-dropdown is-hoverable">
-      <a class="navbar-link">
+      <a class="navbar-link" (click)="dashboard()">
         Dashboards
       </a>
 
       <div class="navbar-dropdown">
-        <a class="navbar-item">
+        <a class="navbar-item" (click)="dashboard()">
          Service Health
         </a>
-        <a class="navbar-item">
+        <a class="navbar-item" (click)="category()">
           Categories
         </a>
         <a class="navbar-item">
@@ -45,12 +45,5 @@
   </div>
 </div>
 </nav>
-</section>
-<section class="section main-content">
-  <div class="container ">
-    <div class="tile is-ancestor">
-  <app-healthcheck></app-healthcheck>
-    </div>
-  </div>
 </section>
 
