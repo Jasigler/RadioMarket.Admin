@@ -1,7 +1,3 @@
-.hidden {
-    visibility: hidden;
-}
-
-.visible {
-    visibility: visible;
+.addbutton {
+    size: 20px;
 }

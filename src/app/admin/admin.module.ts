@@ -4,6 +4,8 @@ import { FrameComponent } from './frame/frame.component';
 import { HealthcheckComponent } from './healthcheck/healthcheck.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { CategoryComponent } from './category/category.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -11,7 +13,9 @@ import { CategoryComponent } from './category/category.component';
   declarations: [FrameComponent, HealthcheckComponent, CategoryComponent],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [HealthcheckComponent, FrameComponent]
 })
