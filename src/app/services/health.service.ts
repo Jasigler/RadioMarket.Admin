@@ -36,8 +36,8 @@ export class HealthService {
     )
   }
 
-  public getImageHealth(): Observable<string> {
-    return this.http.get(this.routes.image, {responseType: 'text'})
+  public getImageHealth(): Observable<any> {
+    return this.http.get(this.routes.image)
       .pipe(
         catchError(this.errorHandler),
         retry(3)

@@ -14,26 +14,30 @@ export class HealthcheckComponent implements OnInit {
   
   upsymbol = faCheckCircle;
   downsymbol = faExclamationCircle;
-  categoryStatus: boolean;
-  itemStatus: boolean;
-  userStatus: boolean;
-  imageStatus: boolean;
+  categoryStatus: string;
+  categoryCount: number;
+ 
+  itemStatus: any;
+  itemDatabase: any;
+  itemMemory: any; 
+  userStatus: any;
+  imageStatus: any;
   
   constructor(private health: HealthService) {
   }
 
   ngOnInit(): void {
       this.health.getCategoryHealth().subscribe(data =>
-        this.categoryStatus = data.toString() === 'Healthy');
+        this.categoryStatus = data);
       
       this.health.getItemHealth().subscribe(data => 
-        this.itemStatus = data.toString() === 'Healthy');
-
-      this.health.getImageHealth().subscribe(data => 
-        this.imageStatus = data.toString() === 'Healthy');
+        this.itemStatus = data);
       
       this.health.getUserHealth().subscribe(data => 
-        this.userStatus = data.toString() === 'Healthy');
+        this.userStatus = data);
+
+      this.health.getImageHealth().subscribe(data =>
+       this.imageStatus = data); 
   }
 
 }

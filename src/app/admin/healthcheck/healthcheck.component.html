@@ -1,33 +1,193 @@
 <app-frame></app-frame>
-<section class="section main-content has-background-light"> 
-  <div class="container service-container">
-
- <div class="tile  box has-text-centered service-card">
-    <H2 class='subtitle card-title'>Category Service</H2>
-    <div class="content" [ngClass]="{'has-text-danger': !categoryStatus, 'has-text-success': categoryStatus}">
-      <fa-icon [icon]="categoryStatus? upsymbol : downsymbol" transform="grow"></fa-icon>
-    </div>
-
-  </div>
-    <div class="tile box  has-text-centered service-card" >
-    <H2 class='subtitle card-title'>Item Service</H2>
-    <div class="content" [ngClass]="{'has-text-success': itemStatus, 'has-text-danger': !itemStatus}">
-      <fa-icon [icon]="itemStatus? upsymbol : downsymbol" transform="grow"></fa-icon>
-    </div>
-
-  </div>
-    <div class="tile box has-text-centered service-card">
-    <H2 class='subtitle card-title'>Image Service</H2>
-    <div class="content" [ngClass]="{'has-text-danger': !imageStatus, 'has-text-success': imageStatus}">
-      <fa-icon [icon]="imageStatus? upsymbol : downsymbol" transform="grow"></fa-icon>
-    </div>
-
-  </div>
-    <div class="tile  box has-text-centered service-card">
-    <H2 class='subtitle card-title'>User Service</H2>
-    <div class="content" [ngClass]="{'has-text-danger': !userStatus, 'has-text-success': userStatus}">
-      <fa-icon [icon]="userStatus? upsymbol : downsymbol" transform="grow"></fa-icon>
-    </div>
-  </div>
-  </div>
+<section class="info-tiles has-background-light">
+	<div class="tile is-ancestor has-text-centered">
+		<div class="tile is-parent">
+			<article class="tile is-child box">
+				<p class="title">0</p>
+				<p class="subtitle">Visits</p>
+			</article>
+		</div>
+		<div class="tile is-parent">
+			<article class="tile is-child box">
+				<p class="title">0</p>
+				<p class="subtitle">Users</p>
+			</article>
+		</div>
+		<div class="tile is-parent">
+			<article class="tile is-child box">
+				<p class="title">0</p>
+				<p class="subtitle">Items</p>
+			</article>
+		</div>
+		<div class="tile is-parent">
+			<article class="tile is-child box">
+				<p class="title">0</p>
+				<p class="subtitle">Completed Orders</p>
+			</article>
+		</div>
+	</div>
+</section>
+<section class="section main-content has-background-light">
+	<div class="container service-container">
+		<div class="columns">
+			<div class="column service-column">
+				<div class="card service-card">
+					<div class="card-header">
+						<p class="card-header-title">Category Service</p>
+					</div>
+					<div class="card-content">
+						<div class="content">
+							<table class="table">
+								<thead>
+									<tr>
+										<th><abbr title="Database Conn"></abbr></th>
+										<th><abbr title="Service Process"></abbr></th>
+										<th><abbr title="Memory Usage"></abbr></th>
+										<th><abbr title="Stats"></abbr></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tr>
+									<td><p>Service Process:</p></td>
+									<td>
+										<p>{{ categoryStatus }}</p>
+									</td>
+									<td><p>Response Time:</p></td>
+									<td><p>7 ms</p></td>
+								</tr>
+								<tr>
+									<td><p>Database Connection:</p></td>
+									<td><p>Status</p></td>
+									<td><p>Query Time:</p></td>
+									<td><p>7ms</p></td>
+								</tr>
+								<tr>
+									<td><p>Memory Usage:</p></td>
+									<td><p>Status</p></td>
+									<td><p>Memory Free:</p></td>
+									<td><p>75%</p></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="card service-card">
+					<div class="card-header">
+						<p class="card-header-title">Item Service</p>
+					</div>
+					<div class="card-content">
+						<div class="content">
+							<table class="table">
+								<thead>
+									<tr>
+										<th><abbr title="Database Conn"></abbr></th>
+										<th><abbr title="Service Process"></abbr></th>
+										<th><abbr title="Memory Usage"></abbr></th>
+										<th><abbr title="Stats"></abbr></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tr>
+									<td><p>Service Process:</p></td>
+									<td><p>{{itemStatus}}</p></td>
+									<td><p>Response Time:</p></td>
+									<td><p>7ms</p></td>
+								</tr>
+								<tr>
+									<td><p>Database Connection:</p></td>
+									<td><p>Status</p></td>
+									<td><p>Query Time:</p></td>
+									<td><p>7ms</p></td>
+								</tr>
+								<tr>
+									<td><p>Memory Usage:</p></td>
+									<td><p>Status</p></td>
+									<td><p>Memory Free:</p></td>
+									<td><p>20 %</p></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="card service-card">
+					<div class="card-header">
+						<p class="card-header-title">User Service</p>
+					</div>
+					<div class="card-content">
+						<div class="content">
+							<table class="table">
+								<thead>
+									<tr>
+										<th><abbr title="Database Conn"></abbr></th>
+										<th><abbr title="Service Process"></abbr></th>
+										<th><abbr title="Memory Usage"></abbr></th>
+										<th><abbr title="Stats"></abbr></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tr>
+									<td><p>Service Process:</p></td>
+									<td><p>{{userStatus}}</p></td>
+									<td><p>Response Time: 7ms</p></td>
+									<td><p>7ms</p></td>
+								</tr>
+								<tr>
+									<td><p>Database Connection:</p></td>
+									<td><p>Status</p></td>
+									<td><p>Query Time:</p></td>
+									<td><p>7ms</p></td>
+								</tr>
+								<tr>
+									<td><p>Memory Usage:</p></td>
+									<td><p>Status</p></td>
+									<td><p>Memory Free:</p></td>
+									<td><p>7ms</p></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="card service-card">
+					<div class="card-header">
+						<p class="card-header-title">Image Service</p>
+					</div>
+					<div class="card-content">
+						<div class="content">
+							<table class="table">
+								<thead>
+									<tr>
+										<th><abbr title="Database Conn"></abbr></th>
+										<th><abbr title="Service Process"></abbr></th>
+										<th><abbr title="Memory Usage"></abbr></th>
+										<th><abbr title="Stats"></abbr></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tr>
+									<td><p>Service Process:</p></td>
+									<td><p>{{imageStatus?.status}}</p></td>
+									<td><p>Response Time:</p></td>
+									<td><p>{{imageStatus?.totalDuration}}</p></td>
+								</tr>
+								<tr>
+									<td><p>Disk Usage:</p></td>
+									<td><p>{{imageStatus?.entries.disk.status}}</p></td>
+									<td><p>Free Space:</p></td>
+									<td><p>{{imageStatus?.entries.disk.data.Free}} MB</p></td>
+								</tr>
+								<tr>
+									<td><p>Memory Usage:</p></td>
+									<td><p>{{imageStatus?.entries.memory.status}}</p></td>
+									<td><p>Memory Free:</p></td>
+									<td><p>{{imageStatus?.entries.memory.data.Free}} MB</p></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
