@@ -9,13 +9,13 @@
 		</div>
 		<div class="tile is-parent">
 			<article class="tile is-child box">
-				<p class="title">0</p>
+				<p class="title">{{userCount | number}}</p>
 				<p class="subtitle">Users</p>
 			</article>
 		</div>
 		<div class="tile is-parent">
 			<article class="tile is-child box">
-				<p class="title">0</p>
+				<p class="title">{{itemCount | number}}</p>
 				<p class="subtitle">Items</p>
 			</article>
 		</div>
@@ -40,8 +40,7 @@
 							<table class="table">
 								<thead>
 									<tr>
-										<th><abbr title="Database Conn"></abbr></th>
-										<th><abbr title="Service Process"></abbr></th>
+									<th><abbr title="Service Process"></abbr></th>
 										<th><abbr title="Memory Usage"></abbr></th>
 										<th><abbr title="Stats"></abbr></th>
 										<th></th>
@@ -50,22 +49,22 @@
 								<tr>
 									<td><p>Service Process:</p></td>
 									<td>
-										<p>{{ categoryStatus }}</p>
+										<p>{{categoryStatus?.status}}</p>
 									</td>
 									<td><p>Response Time:</p></td>
 									<td><p>7 ms</p></td>
 								</tr>
 								<tr>
 									<td><p>Database Connection:</p></td>
-									<td><p>Status</p></td>
+									<td><p>{{categoryStatus?.entries.sql.status}}</p></td>
 									<td><p>Query Time:</p></td>
-									<td><p>7ms</p></td>
+									<td><p>{{categoryStatus?.entries.sql.duration}}</p></td>
 								</tr>
 								<tr>
 									<td><p>Memory Usage:</p></td>
-									<td><p>Status</p></td>
+									<td><p>{{categoryStatus?.entries.memory.status}}</p></td>
 									<td><p>Memory Free:</p></td>
-									<td><p>75%</p></td>
+									<td><p>{{categoryStatus?.entries.memory.data.Free}} MB</p></td>
 								</tr>
 							</table>
 						</div>
@@ -89,21 +88,21 @@
 								</thead>
 								<tr>
 									<td><p>Service Process:</p></td>
-									<td><p>{{itemStatus}}</p></td>
+									<td><p>{{itemStatus?.status}}</p></td>
 									<td><p>Response Time:</p></td>
-									<td><p>7ms</p></td>
+									<td><p>{{itemStatus?.totalDuration}}</p></td>
 								</tr>
 								<tr>
 									<td><p>Database Connection:</p></td>
-									<td><p>Status</p></td>
+									<td><p>{{itemStatus?.entries.sql.status}}</p></td>
 									<td><p>Query Time:</p></td>
-									<td><p>7ms</p></td>
+									<td><p>{{itemStatus?.entries.sql.duration}}</p></td>
 								</tr>
 								<tr>
 									<td><p>Memory Usage:</p></td>
-									<td><p>Status</p></td>
+									<td><p>{{itemStatus?.entries.memory.status}}</p></td>
 									<td><p>Memory Free:</p></td>
-									<td><p>20 %</p></td>
+									<td><p>{{itemStatus?.entries.memory.data.Free}} MB</p></td>
 								</tr>
 							</table>
 						</div>
@@ -127,21 +126,21 @@
 								</thead>
 								<tr>
 									<td><p>Service Process:</p></td>
-									<td><p>{{userStatus}}</p></td>
+									<td><p>{{userStatus?.status}}</p></td>
 									<td><p>Response Time: 7ms</p></td>
-									<td><p>7ms</p></td>
+									<td><p>{{userStatus?.totalDuration}}</p></td>
 								</tr>
 								<tr>
 									<td><p>Database Connection:</p></td>
-									<td><p>Status</p></td>
+									<td><p>{{userStatus?.entries.sql.status}}</p></td>
 									<td><p>Query Time:</p></td>
-									<td><p>7ms</p></td>
+									<td><p>{{userStatus?.entries.sql.duration}}</p></td>
 								</tr>
 								<tr>
 									<td><p>Memory Usage:</p></td>
-									<td><p>Status</p></td>
+									<td><p>{{userStatus?.entries.memory.status}}</p></td>
 									<td><p>Memory Free:</p></td>
-									<td><p>7ms</p></td>
+									<td><p>{{userStatus?.entries.memory.data.Free}} MB</p></td>
 								</tr>
 							</table>
 						</div>

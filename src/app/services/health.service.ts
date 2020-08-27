@@ -19,24 +19,24 @@ export class HealthService {
   }
 
 
-  public getCategoryHealth(): Observable<string> {
+  public getCategoryHealth(): Observable<object> {
 
-    return this.http.get(this.routes.category, {responseType: 'text'})
+    return this.http.get(this.routes.category)
       .pipe(
         catchError(this.errorHandler),
         retry(3)
       )
   }
 
-  public getItemHealth(): Observable<string> {
-    return this.http.get(this.routes.item, {responseType: 'text'}) 
+  public getItemHealth(): Observable<object> {
+    return this.http.get(this.routes.item) 
     .pipe(
       catchError(this.errorHandler),
       retry(3)
     )
   }
 
-  public getImageHealth(): Observable<any> {
+  public getImageHealth(): Observable<object> {
     return this.http.get(this.routes.image)
       .pipe(
         catchError(this.errorHandler),
@@ -44,8 +44,8 @@ export class HealthService {
       )
   }
 
-  public getUserHealth(): Observable<string> {
-    return this.http.get(this.routes.user, {responseType: 'text'})
+  public getUserHealth(): Observable<object> {
+    return this.http.get(this.routes.user)
     .pipe(
       catchError(this.errorHandler),
       retry(3)
