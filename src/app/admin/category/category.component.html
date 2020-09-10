@@ -1,47 +1,37 @@
 <app-frame></app-frame>
 <section class="section">
 	<div class="container">
-		<h1 class="title">RM Categories</h1>
+		<h1 class="title">Radiomarket Categories</h1>
 		<hr />
 	</div>
 </section>
 <section class="section">
 	<nav class="level">
 		<div class="level-left">
-			<div class="level-item">
+			<div class="level-item add-category-level">
 				<p class="subtitle is-5">Add Category</p>
 			</div>
 			<div class="level-item">
 				<fa-icon class="fa-lg" [icon]="addSymbol" (click)="openAddModal()"></fa-icon>
 			</div>
 		</div>
-		<div class="level-left">
-			<div class="level-item"></div>
-			<div class="level-item">
-				<div class="dropdown is-active">
-					<div class="dropdown-trigger">
-						<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-							<span>Filter By Parent</span>
-							<span class="icon is-small">
-								<i class="fas fa-angle-down" aria-hidden="true"></i>
-							</span>
-						</button>
-					</div>
-					<div class="dropdown-menu" id="dropdown-menu" role="menu">
-						<div class="dropdown-content">
-							<a href="#" class="dropdown-item" *ngFor="let parent of parentCategories | async">
-								{{parent?.is_active}}
-							</a>
+		<div class="level-right">
 
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</nav>
 	<section class="section">
 		<div class="container">
-			<table class="table is-fullwidth">
+			<hr>
+			<div class="card" *ngFor="let category of categories | parent">
+				<div class="card-image">
+					<p>{{category.name}}</p>
+					<figure class="image is-128x128">
+						<img src="{{getCategoryImage(category.category_id)}}">
+					</figure>
+				</div>
+
+			</div>
+			<!-- <table class="table is-fullwidth">
 				<thead>
 					<tr>
 						<th><abbr title="Edit">Edit</abbr></th>
@@ -64,7 +54,7 @@
 					<td>{{ category?.parent_id }}</td>
 					<td>{{ category?.is_active }}</td>
 				</tr>
-			</table>
+			</table> -->
 		</div>
 	</section>
 	<div class="modal edit-modal" [ngClass]="{ 'is-active': editModalOpen }">

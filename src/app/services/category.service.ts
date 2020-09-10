@@ -14,9 +14,19 @@ export class CategoryService {
 	constructor(private http: HttpClient) {}
 
 	private route = `${environment.CATEGORY_API}/category`;
+	private image = `${environment.IMAGE_API}/image`
 
 	public getCategories(): Observable<any> {
-		return this.http.get(this.route).pipe(catchError(this.errorHandler), retry(3));
+		return this.http.get(this.route)
+			.pipe(catchError(this.errorHandler), retry(3));
+	}
+
+	public getCategoryImage(categoryId: string): Promise<any>{
+		return this.http.get(`${this.image}/category/${categoryId}`)
+			.toPromise()
+			.catch((error) => {
+				this.errorHandler
+			})
 	}
   
   public updateCategory(categoryId: number, updateBody: CategoryUpdate): Promise<any> {
@@ -35,6 +45,10 @@ export class CategoryService {
 			.catch((error) => {
 				this.errorHandler(error);
 			});
+	}
+
+	public getImage(): Observable<any> {
+		return this.http.get(this.image).pipe(catchError(this.errorHandler), retry(3));
 	}
 
 	private errorHandler(error: HttpErrorResponse) {

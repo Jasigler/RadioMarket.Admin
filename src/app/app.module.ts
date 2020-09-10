@@ -8,9 +8,8 @@ import { LoginComponent } from './login/login.component';
 import {AdminModule} from './admin/admin.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent ],
   imports: [BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,

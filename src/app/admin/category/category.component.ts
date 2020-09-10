@@ -1,137 +1,126 @@
 import { Component, OnInit } from '@angular/core';
-import {FrameComponent} from '../frame/frame.component';
+import { FrameComponent } from '../frame/frame.component';
 import { CategoryService } from 'src/app/services/category.service';
 import { Observable } from 'rxjs';
-import {faEdit} from '@fortawesome/free-solid-svg-icons/faEdit';
-import {faTrash} from '@fortawesome/free-solid-svg-icons/fatrash';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle'
+import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/fatrash';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle';
 import { CategoryUpdate } from 'src/Models/CategoryUpdate';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Category } from '../../../Models/Category';
-import { NewCategory} from '../../../Models/NewCategory';
+import { NewCategory } from '../../../Models/NewCategory';
 import { map, filter } from 'rxjs/operators';
-
+import { ParentPipe } from '../../pipes/parent.pipe';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+	selector: 'app-category',
+	templateUrl: './category.component.html',
+	styleUrls: ['./category.component.css'],
 })
 export class CategoryComponent implements OnInit {
- 
-  categories: Observable<any[]>
-  parentCategories: Observable<any[]>
-  currentCategory: Category;
-  editForm: FormGroup;
-  addForm: FormGroup;
+	categories: Observable<Category[]>;
+	images: Observable<string[]>;
+	currentCategory: Category;
+	editForm: FormGroup;
+	addForm: FormGroup;
 
-  editSymbol = faEdit;
-  addSymbol = faPlusCircle;
-  delteSymbol = faTrash;
-  
-  isWorking = false;
-  editModalOpen = false;
-  editSuccess = false;
-  addModalOpen = false;
+	editSymbol = faEdit;
+	addSymbol = faPlusCircle;
+	delteSymbol = faTrash;
 
-  
-  constructor(private builder: FormBuilder,
-    private categoryService: CategoryService) { }
+	isWorking = false;
+	editModalOpen = false;
+	editSuccess = false;
+	addModalOpen = false;
 
-  ngOnInit(): void {
-    this.categories = this.categoryService.getCategories()
-    
-    this.editForm = this.builder.group({
-      name: '',
-      parent: null,
-      active: null
-    });
-    this.addForm = this.builder.group({
-      name: '', 
-      parent: null,
-      active: null
-    })
-  }
+	constructor(private builder: FormBuilder, private categoryService: CategoryService) {}
 
-  openEditModal() {
-    this.editModalOpen = true;
-  }
+	ngOnInit(): void {
+		this.categoryService.getCategories().subscribe((data) => {
+			this.categories = data;
+		});
+		this.editForm = this.builder.group({
+			name: '',
+			parent: null,
+			active: null,
+		});
+		this.addForm = this.builder.group({
+			name: '',
+			parent: null,
+			active: null,
+		});
+	}
 
-  closeEditModal() {
-    this.editModalOpen = false;
-  }
+	openEditModal() {
+		this.editModalOpen = true;
+	}
 
-  openAddModal() {
-    this.addModalOpen = true;
-  }
+	closeEditModal() {
+		this.editModalOpen = false;
+	}
 
-  closeAddModal() {
-    this.addModalOpen = false;
-  }
+	openAddModal() {
+		this.addModalOpen = true;
+	}
 
+	closeAddModal() {
+		this.addModalOpen = false;
+	}
 
-  setCategoryInfo(category: Category) {
-   this.currentCategory = category
-   console.log(this.currentCategory);
-   console.log(this.currentCategory.is_active); 
-  }
+	async getCategoryImage(categoryId: string): Promise<string> {
+		return await this.categoryService.getCategoryImage(categoryId);
+	}
 
-  async updateObservableList() {
-    this.categories = await this.categoryService.getCategories();
-  }
+	setCategoryInfo(category: Category) {
+		this.currentCategory = category;
+		console.log(this.currentCategory);
+		console.log(this.currentCategory.is_active);
+	}
 
-  async updateParentObservableList() {
-    this.parentCategories = this.categories
-      .pipe(
-      map(items => items.filter(item => item.attending)),
-      filter(items => items && items.length > 0)
-    ); 
-  }
+	async updateObservableList() {
+		this.categories = await this.categoryService.getCategories();
+	}
 
-  async updateCategory() {
-    this.isWorking = true;
+	async updateCategory() {
+		this.isWorking = true;
 
-    let changes = new CategoryUpdate;
+		let changes = new CategoryUpdate();
 
-    if (this.editForm.value.name !== ''){
-      changes.name = this.editForm.value.name
-    }
+		if (this.editForm.value.name !== '') {
+			changes.name = this.editForm.value.name;
+		}
 
-    if (this.editForm.value.parent !== null) {
-      changes.parent_id = this.editForm.value.parent;
-    }
+		if (this.editForm.value.parent !== null) {
+			changes.parent_id = this.editForm.value.parent;
+		}
 
-    if (this.editForm.value.active !== null) {
-      changes.is_active = this.editForm.value.active
-    }
+		if (this.editForm.value.active !== null) {
+			changes.is_active = this.editForm.value.active;
+		}
 
-    await this.categoryService.updateCategory(this.currentCategory.category_id,
-      changes);
-    
-    this.categories = await this.categoryService.getCategories();
-    await this.updateObservableList();
-    this.isWorking = false;
-    this.closeEditModal();
+		await this.categoryService.updateCategory(this.currentCategory.category_id, changes);
 
-  }
+		this.categories = await this.categoryService.getCategories();
+		await this.updateObservableList();
+		this.isWorking = false;
+		this.closeEditModal();
+	}
 
-  async addCategory() {
-    this.isWorking = true;
+	async addCategory() {
+		this.isWorking = true;
 
-    let category = new NewCategory();
-    category.name = this.addForm.value.name;
-    category.is_active = this.addForm.value.is_active
-    if (this.addForm.value.parent_id != null) {
-      category.parent_id = this.addForm.value.parent_id;
-    }
+		let category = new NewCategory();
+		category.name = this.addForm.value.name;
+		category.is_active = this.addForm.value.is_active;
+		if (this.addForm.value.parent_id != null) {
+			category.parent_id = this.addForm.value.parent_id;
+		}
 
-    await this.categoryService.addCategory(category);
-    
-    await this.updateObservableList();
+		await this.categoryService.addCategory(category);
 
-    this.isWorking = false;
-    this.addModalOpen = false;
-  }
+		await this.updateObservableList();
 
-
+		this.isWorking = false;
+		this.addModalOpen = false;
+	}
 }

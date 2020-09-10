@@ -5,12 +5,13 @@ import { HealthcheckComponent } from './healthcheck/healthcheck.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { CategoryComponent } from './category/category.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ParentPipe } from '../pipes/parent.pipe';
 
 
 
 
 @NgModule({
-  declarations: [FrameComponent, HealthcheckComponent, CategoryComponent],
+  declarations: [FrameComponent, HealthcheckComponent, CategoryComponent, ParentPipe],
   imports: [
     CommonModule,
     FontAwesomeModule,

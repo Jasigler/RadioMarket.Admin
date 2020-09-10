@@ -7,6 +7,9 @@
     justify-content: space-evenly;
 
 }
+.info-tiles{
+    margin-top: 25px;
+}
 
 .service-card {
     margin-top: 10px;
